@@ -31,9 +31,13 @@ export class RepoService {
       );
     }
   }
-  async findOne(name: string, access_token: string) {
+  async findOne(name: string, owner: string, access_token: string) {
     try {
-      const data = await this.apiClientService.getRepo(access_token, name);
+      const data = await this.apiClientService.getRepo(
+        access_token,
+        name,
+        owner,
+      );
       const response = {
         id: data.data.id,
         name: data.data.name,

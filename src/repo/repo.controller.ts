@@ -23,6 +23,10 @@ export class RepoController {
 
   @Get()
   async findOne(@Query('name') name: string, @Req() req: any) {
-    return await this.repoService.findOne(name, req['user'].access_token);
+    return await this.repoService.findOne(
+      name,
+      req['user'].name,
+      req['user'].access_token,
+    );
   }
 }

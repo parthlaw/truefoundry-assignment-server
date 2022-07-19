@@ -34,13 +34,13 @@ export class ApiclientService {
       );
     }
   }
-  async getRepo(access_token: string, query: string) {
+  async getRepo(access_token: string, query: string, owner: string) {
     const octokit = new Octokit({
       auth: access_token,
     });
     try {
       return await octokit.repos.get({
-        owner: 'parthlaw',
+        owner: owner,
         repo: query,
       });
     } catch (e) {

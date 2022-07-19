@@ -28,7 +28,7 @@ export class OauthService {
       const userData = userDataResponse.data;
       response.isValid = true;
       response.user = {} as any;
-      response.user.name = userData.name || userData.login || 'no name';
+      response.user.name = userData.login || userData.name || 'no name';
       response.user.github_id = userData.id;
       response.user.email = userData.email || 'no email';
       response.user.profile_pic = userData.avatar_url;
