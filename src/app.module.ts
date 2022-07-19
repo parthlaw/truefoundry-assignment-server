@@ -18,6 +18,7 @@ import { User } from './user/entities/user.entity';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'database.sqlite',
+      synchronize: true,
       entities: [User],
     }),
   ],
