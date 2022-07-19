@@ -19,6 +19,8 @@ import { User } from './user/entities/user.entity';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
+      synchronize: true,
+      entities: [User],
     }),
   ],
   controllers: [AppController],

@@ -14,6 +14,7 @@ export class OauthService {
           },
         },
       );
+
       const token = accessTokenResponse.data;
       if (token.error) {
         return { isValid: false };
@@ -27,8 +28,8 @@ export class OauthService {
       const userData = userDataResponse.data;
       response.isValid = true;
       response.user = {} as any;
-      response.user.name = userData.name;
-      response.user.email = userData.email;
+      response.user.name = userData.name || userData.login || 'no name';
+      response.user.email = userData.email || 'no email';
       response.user.profile_pic = userData.avatar_url;
       response.user.access_token = token.access_token;
       return response;

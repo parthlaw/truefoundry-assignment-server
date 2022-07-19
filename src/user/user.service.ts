@@ -17,8 +17,9 @@ export class UserService {
       const response = await this.oauthService.getGithubData(
         createUserDto.code,
       );
+      let user: User;
       if (response.isValid) {
-        let user = await this.userRepository.findOne({
+        user = await this.userRepository.findOne({
           where: { email: response.user.email },
         });
         if (user) {
