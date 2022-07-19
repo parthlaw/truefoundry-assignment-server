@@ -17,10 +17,8 @@ import { User } from './user/entities/user.entity';
     UserModule,
     RepoModule,
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
-      synchronize: true,
-      entities: [User],
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
     }),
   ],
   controllers: [AppController],
