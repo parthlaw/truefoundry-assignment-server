@@ -8,7 +8,6 @@ import { ApiclientService } from './apiclient/apiclient.service';
 import { OauthService } from './oauth/oauth.service';
 import { JwtService } from './jwt/jwt.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserService } from './user/user.service';
 import { User } from './user/entities/user.entity';
 
 @Module({
@@ -17,10 +16,8 @@ import { User } from './user/entities/user.entity';
     UserModule,
     RepoModule,
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      synchronize: true,
-      entities: [User],
+      type: 'sqlite',
+      database: 'database.sqlite',
     }),
   ],
   controllers: [AppController],

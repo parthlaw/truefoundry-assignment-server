@@ -21,9 +21,12 @@ export class AuthGuard implements CanActivate {
     if (!request.cookies) request.cookies = {};
     if (!request.headers) request.headers = {};
     // Headers doesn't recognise uppercase characters
-    const { authorization: accessTokenFromHeader } = request.headers;
+    let { authorization: accessTokenFromHeader } = request.headers;
     if (!accessTokenFromHeader) {
       return false;
+    }
+    if (accessTokenFromHeader.startsWith('Bearer ')) {
+      accessTokenFromHeader = accessTokenFromHeader.substring(7);
     }
     try {
       const access_token = accessTokenFromHeader as string;
