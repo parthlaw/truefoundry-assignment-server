@@ -20,7 +20,7 @@ export class UserService {
       let user: User;
       if (response.isValid) {
         user = await this.userRepository.findOne({
-          where: { email: response.user.email },
+          where: { github_id: response.user.github_id },
         });
         if (user) {
           user.access_token = response.user.access_token;
@@ -31,6 +31,7 @@ export class UserService {
             email: response.user.email,
             profile_pic: response.user.profile_pic,
             access_token: response.user.access_token,
+            github_id: response.user.github_id,
           });
         }
         const token = this.jwtservice.createToken(user.id);
